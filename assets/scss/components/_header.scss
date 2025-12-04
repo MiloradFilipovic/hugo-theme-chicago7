@@ -2,8 +2,14 @@
 
 body>header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  gap: 0.2rem;
+
+  .logo {
+    position: relative;
+    top: 10px;
+  }
 
   hgroup {
     display: flex;
