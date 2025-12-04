@@ -1,13 +1,30 @@
 @use "../core/settings" as *;
 
 footer {
+  display: flex;
+  padding: 0 !important;
+  justify-content: space-between;
+  align-items: baseline;
   border-top: medium double var(#{$css-var-prefix}primary);
-  padding: 1rem 0;
-  text-align: center;
   margin-top: 2rem;
 
+  a {
+    text-decoration: none;
+  }
+
   .social {
+    display: flex;
     justify-content: center;
+    padding: 0 0.5rem;
+    gap: 1rem;
+
+    li, a {
+      padding: 0;
+    }
+
+    a {
+      padding: 0 8px;
+    }
 
     svg {
       max-width: 2rem;

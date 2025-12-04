@@ -1,27 +1,43 @@
 <footer class="footer">
-    <p>
-        Built with
-        <a href="https://gohugo.io" class="footerLink">Hugo</a> and
-        <a href="https://github.com/akopdev/hugo-theme-chicago7" class="footerLink">Chicago7</a> theme
+    <p :class="footerText">
+        [<a href="https://gohugo.io" class="footerLink">Hugo</a> ✖ <a href="https://github.com/akopdev/hugo-theme-chicago7" class="footerLink">Chicago7</a>]
     </p>
+    {{ $iconOrder := slice 
+        "github"
+        "linkedin"
+        "twitter"
+        "facebook"
+        "instagram"
+        "youtube"
+        "behance"
+        "dribbble"
+        "pinterest"
+        "vimeo"
+        "soundcloud"
+        "gplus"
+        "feed" 
+    }}
     {{ $icons := dict
-      "behance" "behance.svg"
-      "dribbble" "dribbble.svg"
-      "facebook" "facebook.svg"
-      "feed" "feed.svg"
-      "gplus" "gplus.svg"
-      "instagram" "instagram.svg"
-      "linkedin" "linkedin.svg"
-      "pinterest" "pinterest.svg"
-      "soundcloud" "soundcloud.svg"
-      "vimeo" "vimeo.svg"
-      "twitter" "twitter.svg"
-      "youtube" "youtube.svg"
+        "github" "github.svg"
+        "behance" "behance.svg"
+        "dribbble" "dribbble.svg"
+        "facebook" "facebook.svg"
+        "feed" "feed.svg"
+        "gplus" "gplus.svg"
+        "instagram" "instagram.svg"
+        "linkedin" "linkedin.svg"
+        "pinterest" "pinterest.svg"
+        "soundcloud" "soundcloud.svg"
+        "vimeo" "vimeo.svg"
+        "twitter" "twitter.svg"
+        "youtube" "youtube.svg"
     }}
     {{ with site.Params.social }}
     <nav class="social">
     <ul>
-    {{ range $key, $icon := $icons }}
+    {{ range $iconOrder }}
+    {{ $key := . }}
+    {{ $icon := index $icons $key }}
     {{ $url := index site.Params.social $key }}
       {{ with $url }}
         <li>
@@ -35,7 +51,4 @@
     </ul>
     </nav>
     {{ end }}
-    <p>
-        &copy; {{ now.Year }} {{ .Site.Params.author }} 
-    </p>
 </footer>

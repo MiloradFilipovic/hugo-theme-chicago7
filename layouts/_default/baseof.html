@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 <head>
-    <title>{{ .Title }}</title>
+    <title>
+      {{ if .IsHome }}
+          {{ .Site.Title }}
+      {{ else }}
+          {{ .Site.Title }}::{{ .Title }}
+      {{ end }}
+    </title>
     {{ partial "head.html" . }}
 </head>
 

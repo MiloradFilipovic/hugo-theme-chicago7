@@ -31,7 +31,7 @@
   {{ end }}
 {{ end }}
 <!-- Icons -->
-<link rel="shortcut icon" href="{{ .Site.Params.Favicon | default "favicon.svg" | relURL }}" >
+{{ partial "favicon.html" . }}
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary" />
 {{ if (isset $.Site.Params "twitter") }}
