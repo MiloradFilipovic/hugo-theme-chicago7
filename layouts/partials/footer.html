@@ -1,11 +1,13 @@
 <footer class="footer">
-    <p :class="footerText">
+    <div class="footerText">
         [&copy; {{ now.Format "2006" }} 
         <a href="mailto:{{ .Site.Params.Contact }}">{{ .Site.Params.author }}</a>]
-        [<a href="https://gohugo.io" class="footerLink">Hugo</a>
-        ✕
-        <a href="https://github.com/akopdev/hugo-theme-chicago7" class="footerLink">Chicago7</a>]
-    </p>
+        <div class="stack">
+          [<a href="https://gohugo.io" class="footerLink">Hugo</a>
+          ✕
+          <a href="https://github.com/akopdev/hugo-theme-chicago7" class="footerLink">Chicago7</a>]
+        </div>
+      </div>
     {{ $iconOrder := slice 
         "github"
         "goodreads"

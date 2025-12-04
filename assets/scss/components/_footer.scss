@@ -8,6 +8,10 @@ footer {
   border-top: medium double var(#{$css-var-prefix}primary);
   margin-top: 2rem;
 
+  .footerText {
+    display: flex;
+  }
+
   a {
     text-decoration: none;
 
@@ -43,5 +47,11 @@ footer {
     color: var(#{$css-var-prefix}muted-color);
     font-family: var(#{$css-var-prefix}font-family-header);
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .stack {
+    display: none;
   }
 }
