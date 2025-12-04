@@ -1,6 +1,10 @@
 <footer class="footer">
     <p :class="footerText">
-        [<a href="https://gohugo.io" class="footerLink">Hugo</a> ✖ <a href="https://github.com/akopdev/hugo-theme-chicago7" class="footerLink">Chicago7</a>]
+        [&copy; {{ now.Format "2006" }} 
+        <a href="mailto:{{ .Site.Params.Contact }}">{{ .Site.Params.author }}</a>]
+        [<a href="https://gohugo.io" class="footerLink">Hugo</a>
+        ✕
+        <a href="https://github.com/akopdev/hugo-theme-chicago7" class="footerLink">Chicago7</a>]
     </p>
     {{ $iconOrder := slice 
         "github"
