@@ -70,4 +70,6 @@
 {{ with .OutputFormats.Get "json" }}
   <link href="{{ .RelPermalink }}" rel="alternate" type="application/json" title="{{ $.Site.Title }}" />
 {{ end }}
+<!-- Custom scripts -->
+{{ partial "scripts.html" . }}
 
