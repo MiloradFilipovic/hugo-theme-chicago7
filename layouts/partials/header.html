@@ -4,9 +4,17 @@
       <h1><a href="{{ $.Site.BaseURL }}">{{ .Site.Title }}</a></h1>
       <nav aria-label="Main navigation">
           <ul>
-              {{ $current := . }}
+              {{ $currentPage := . }}
               {{ range .Site.Menus.header.ByWeight }}
-              <li><a href="{{ .URL | relURL }}">{{- .Name -}}</a></li>
+              {{ $menuURL := .URL | relURL }}
+              {{ $pageURL := $currentPage.RelPermalink }}
+              {{ $isActive := false }}
+              {{ if eq $menuURL "/" }}
+                {{ $isActive = eq $pageURL "/" }}
+              {{ else }}
+                {{ $isActive = or (eq $pageURL $menuURL) (hasPrefix $pageURL $menuURL) }}
+              {{ end }}
+              <li><a href="{{ $menuURL }}" {{ if $isActive }}class="active"{{ end }}>{{- .Name -}}</a></li>
               {{ end }}
           </ul>
       </nav>
