@@ -27,6 +27,12 @@ body>header {
         text-decoration: none;
         text-transform: uppercase;
       }
+
+      @media screen and (max-width: 408px) {
+        a {
+          font-size: 1.5rem;
+        }
+      }
     }
 
     nav {
