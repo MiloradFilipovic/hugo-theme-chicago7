@@ -6,7 +6,7 @@
   <header>
     <h1>{{ .Title }}</h1>
     <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "January 02, 2006" }}</time>
-    <span aria-label="Reading time"> · {{ .ReadingTime }} min read</span>
+    <span aria-label="Reading time"> · {{ .ReadingTime }} min</span>
     {{ if .Params.tags }}
      <nav>
           <ul>
