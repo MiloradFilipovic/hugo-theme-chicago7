@@ -53,9 +53,15 @@
     </div>
 </div>
 <script>
-
-    const scripts = [];{{ range $index, $item := (where .Site.Data.consent.items "is_functional" false) }}
-    scripts[{{ $index }}] = "/js/{{ $item.script_file }}";{{ end }}
+    const scripts = [];
+    {{- range $index, $item := (where .Site.Data.consent.items "is_functional" false) -}}
+        {{- if $item.script_template -}}
+            {{- $js := resources.Get $item.script_template | resources.ExecuteAsTemplate (printf "consent-%d.js" $index) $ | js.Build -}}
+            scripts[{{ $index }}] = "{{ $js.RelPermalink }}";
+        {{- else -}}
+            scripts[{{ $index }}] = "/js/{{ $item.script_file }}";
+        {{- end -}}
+    {{- end }}
 
     function createCookie(name,value,days) {
         var expires = "";
@@ -102,11 +108,12 @@
     }
     function loadConsentScripts(consentValue) {
         scripts.forEach(function(value,key){
-            //console.log('script'+key+' is set to ' +consentValue[key]+' and is file '+value);
             if(consentValue[key]=="1") {
                 var s = document.createElement('script');
                 s.type = 'text/javascript';
                 s.src = value;
+                s.onerror = function() { console.error('Failed to load script:', value); };
+                s.onload = function() { console.log('Successfully loaded script:', value); };
                 document.body.appendChild(s);
             }
         });
