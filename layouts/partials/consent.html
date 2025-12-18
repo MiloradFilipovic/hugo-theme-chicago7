@@ -1,5 +1,6 @@
 <style>
     #consent-notice {padding: 1rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: 100%; background: #222; color: rgba(255,255,255,0.8); z-index: 999999;}
+    #consent-notice .consent-buttons {display: inline-block;}
     #consent-notice span {margin-right: 1rem;}
     #consent-notice button {display: inline-block; width: auto; margin-left: 0.5rem; margin-bottom: 0; background: transparent; color: inherit;}
     #consent-notice button:hover, #consent-notice button:focus {background: transparent; color: inherit;}
@@ -21,9 +22,20 @@
         #consent-notice span {display: block; padding-top: 3px; margin-bottom: 1.5rem;}
         #consent-notice button {position: relative; bottom: 4px;}
     }
+
+    @media (max-width: 400px) {
+        #consent-notice .consent-text {
+            margin: 0 0 1rem;
+        }
+
+        #consent-notice .consent-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+    }
 </style>
-<div id="consent-notice"><span>I would like to use <a class="manage-consent" href="#manage-consent">third party code</a> to read your passwords</span><button class="button manage-consent">Manage preferences</button><button class="button deny-consent">Deny</button><button class="button approve-consent">Allow</button></div>
-<div id="consent-overlay">
+<div id=consent-notice><span class="consent-text">I would like to use <a class=manage-consent href=#manage-consent>third party code</a> to read your passwords</span><div class=consent-buttons><button class="button manage-consent">Manage preferences</button> <button class="button deny-consent">Deny</button> <button class="button approve-consent">Allow</button></div></div><div id="consent-overlay">
     <div>
         {{ range $index, $item := .Site.Data.consent.items }}
             <div>
