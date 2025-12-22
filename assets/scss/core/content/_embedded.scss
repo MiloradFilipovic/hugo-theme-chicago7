@@ -39,6 +39,7 @@
     max-width: 100%; // 2
     height: auto; // 2
     border-style: none; // 1
+    margin-bottom: var(--pico-typography-spacing-vertical);
   }
 
   // Change the fill color to match the text color in all browsers (opinionated)
