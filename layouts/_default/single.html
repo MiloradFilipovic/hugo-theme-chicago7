@@ -6,11 +6,13 @@
   <header class="post-header">
     <h1>{{ .Title }}</h1>
     <div class="meta">
-      <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "January 02, 2006" }}</time>
-      <span class="separator">::</span>
-      <span aria-label="Reading time" class="reading-time">{{ .ReadingTime }} min</span>
+      <div class="post-date-reading-time">
+        <time datetime="{{ .PublishDate.Format "2006-01-02" }}">{{ .PublishDate.Format "January 02, 2006" }}</time>
+        <span class="separator">::</span>
+        <span aria-label="Reading time" class="reading-time">{{ .ReadingTime }} min</span>
+      </div>
       {{ if .Params.tags }}
-      <span class="separator">::</span>
+      <span class="separator tags-separator">::</span>
       <nav class="tags-nav">
             <ul>
             {{ range .Params.tags }}
